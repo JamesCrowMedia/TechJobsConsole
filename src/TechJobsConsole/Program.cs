@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace TechJobsConsole
@@ -63,7 +64,8 @@ namespace TechJobsConsole
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        Console.WriteLine("Search all fields not yet implemented.");
+                        searchResults = JobData.FindByValue(searchTerm);
+                        PrintJobs(searchResults);
                     }
                     else
                     {
@@ -118,7 +120,35 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("printJobs is not implemented yet");
+            /*
+            ******
+            position type: Data Scientist / Business Intelligence
+            name: Sr. IT Analyst (Data/BI)
+            employer: Bull Moose Industries
+            location: Saint Louis
+            core competency: Statistical Analysis
+            *****
+            */
+
+            if (someJobs.Any() == false)
+            {
+                Console.WriteLine("******\n{0}\n******", "No jobs found.");
+            }
+            else
+            { 
+
+                foreach (Dictionary<string, string> jobs in someJobs)
+                {
+                    Console.WriteLine("******");
+
+                    foreach (KeyValuePair<string, string> detail in jobs)
+                    {
+                        Console.WriteLine("{0}: {1}", detail.Key, detail.Value);
+                    }
+
+                    Console.WriteLine("******\n");
+                }
+            }
         }
     }
 }
