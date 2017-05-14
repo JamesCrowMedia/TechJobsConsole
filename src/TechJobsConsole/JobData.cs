@@ -23,6 +23,8 @@ namespace TechJobsConsole
 
             return jobs;
 
+            //List<Dictionary<string, string>> jobs = (List<Dictionary<string, string>>) AllJobs.MemberwiseClone();
+
         }
 
         /*

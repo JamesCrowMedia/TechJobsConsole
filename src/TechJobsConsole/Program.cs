@@ -130,6 +130,8 @@ namespace TechJobsConsole
             *****
             */
 
+            //someJobs.OrderBy(dict => dict["employer"]).ThenByDescending(dict => dict["location"]);
+
             if (someJobs.Any() == false)
             {
                 Console.WriteLine("******\n{0}\n******", "No jobs found.");
@@ -137,7 +139,7 @@ namespace TechJobsConsole
             else
             { 
 
-                foreach (Dictionary<string, string> jobs in someJobs)
+                foreach (Dictionary<string, string> jobs in someJobs.OrderBy(dict => dict["employer"]).ThenByDescending(dict => dict["name"]))
                 {
                     Console.WriteLine("******");
 
